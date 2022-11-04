@@ -1,29 +1,30 @@
 # Databases_IOT
 
-## Lab 4
+## Lab 5
 
 Task:
 
-1. The task is performed on the basis of the designed model of the database
-lab works No. 1 and the developed script in No. 3.
+For the designed database, implement a Back-end project using the Spring Boot ecosystem (Spring Data JPA) in the form of a Maven project with a connection to MySQL.
 
-2. The database must be deployed using an SQL script.
+Controllers should process requests for CRUD operations and return the necessary data in the form of DTO objects with links (web addresses), according to HATEOAS recommendations.
 
-3. The Java client program is created in the form of Maven
-project with connection to MySQL.
+Services must contain basic business logic for working with data.
 
-4. The project structure is created based on the MVC pattern. Where
-the model must contain both the Database Access Layer and
-Business Logic Layer. Implementation of the Database Access level
-performed on the basis of the DAO pattern.
+If necessary, repositories can contain additional methods (automatically generated or with JPQL queries) for working with data.
 
-5. The User Interface Layer is implemented as a console
-menu. At the same time, the program must provide work with
-data in the database using Spring JDBCTemplate:
-• data output from tables;
-• inserting data into the table;
-• deleting data from the table;
-• updating data in tables.
+Implement client work with data through Swagger:
 
-6. The implemented project should be uploaded to GitHub.
+ - data output from tables;
+ 
+ - inserting data into the table;
+ 
+ - updating data in tables.
+ 
+ - deleting data from the table;
+ 
+ - data output from the side of the M:1 connection, that is, for example, for each city, output the people who live in it;
+ 
+ - data output from the connection table of the M:M connection, that is, to output for each subject from one table all the subjects of the second table that are connected to it.
+ 
+The implemented project should be uploaded to GitHub.
 
