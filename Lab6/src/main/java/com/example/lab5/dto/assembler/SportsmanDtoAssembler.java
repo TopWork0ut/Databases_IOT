@@ -23,6 +23,7 @@ public class SportsmanDtoAssembler implements RepresentationModelAssembler<Sport
                 .height(entity.getHeight())
                 .weight(entity.getWeight())
                 .scheduleID(entity.getSchedule().getId())
+                .doctor_id(entity.getDoctor_id())
                 .build();
         Link selfLink = linkTo(methodOn(SportsmanController.class).getSportsman(sportsmanDto.getId())).withSelfRel();
         sportsmanDto.add(selfLink);

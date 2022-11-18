@@ -54,6 +54,7 @@ public class SportsmanServiceImpl implements SportsmanService {
         sportsman.setKindOfSport(sportsmanParam.getKindOfSport());
         sportsman.setHeight(sportsmanParam.getHeight());
         sportsman.setWeight(sportsmanParam.getWeight());
+        sportsman.setDoctor_id(sportsmanParam.getDoctor_id());
         sportsmanRepository.save(sportsman);
     }
 

@@ -4,6 +4,7 @@ import com.example.lab5.domain.Schedule;
 import com.example.lab5.domain.Supplement;
 import com.example.lab5.exception.DishNotFoundException;
 import com.example.lab5.exception.ScheduleNotFoundException;
+import com.example.lab5.exception.SupplementNotFoundException;
 import com.example.lab5.repository.ScheduleRepository;
 import com.example.lab5.repository.SupplementRepository;
 import com.example.lab5.service.SupplementService;
@@ -22,7 +23,7 @@ public class SupplementServiceImpl implements SupplementService {
 
     public Supplement findById(Integer id) {
         return supplementRepository.findById(id)
-                .orElseThrow(() -> new DishNotFoundException(id));
+                .orElseThrow(() -> new SupplementNotFoundException(id));
     }
 
     public List<Supplement> findAll() {
@@ -47,7 +48,7 @@ public class SupplementServiceImpl implements SupplementService {
     @Transactional
     public void update(Integer id, Supplement supplementParam) {
         Supplement supplement = supplementRepository.findById(id)
-                .orElseThrow(() -> new DishNotFoundException(id));
+                .orElseThrow(() -> new SupplementNotFoundException(id));
         supplement.setName(supplementParam.getName());
         supplement.setComponents(supplementParam.getComponents());
         supplement.setCalories(supplementParam.getCalories());
@@ -60,7 +61,7 @@ public class SupplementServiceImpl implements SupplementService {
     @Transactional
     public void delete(Integer id) {
         Supplement supplement = supplementRepository.findById(id)
-                .orElseThrow(() -> new DishNotFoundException(id));
+                .orElseThrow(() -> new SupplementNotFoundException(id));
         supplementRepository.delete(supplement);
     }
 }

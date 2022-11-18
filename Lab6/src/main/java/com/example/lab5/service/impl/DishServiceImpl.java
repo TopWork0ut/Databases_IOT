@@ -8,9 +8,11 @@ import com.example.lab5.repository.DishRepository;
 import com.example.lab5.repository.ScheduleRepository;
 import com.example.lab5.service.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -48,7 +50,6 @@ public class DishServiceImpl implements DishService {
     public void update(Integer id, Dish dishParam) {
         Dish dish = dishRepository.findById(id)
                 .orElseThrow(() -> new DishNotFoundException(id));
-        //update
         dish.setName(dishParam.getName());
         dish.setComponents(dishParam.getComponents());
         dish.setCalories(dishParam.getCalories());
@@ -58,10 +59,38 @@ public class DishServiceImpl implements DishService {
         dishRepository.save(dish);
     }
 
-    @Transactional
+
+
     public void delete(Integer id) {
         Dish dish = dishRepository.findById(id)
                 .orElseThrow(() -> new DishNotFoundException(id));
         dishRepository.delete(dish);
+    }
+
+    @Override
+    public void dishInsertion(String name, String components, Integer calories, String manufacturer, Date production_date, Date consumption_date) {
+        dishRepository.dishInsertion(name, components, calories, manufacturer, production_date, consumption_date);
+    }
+
+    @Override
+    public void scheduleDishInsertion(Integer dish_id, Integer schedule_id) {
+        dishRepository.scheduleDishInsertion(dish_id, schedule_id);
+    }
+
+    @Override
+    public void insertionTenDishes(){
+        dishRepository.insertionTenDishes();
+    };
+
+    @Transactional
+    @Override
+    public Integer printMinCountOfCalories(){
+        return dishRepository.printMinCountOfCalories();
+    };
+
+    @Transactional
+    @Override
+    public void createTables() {
+        dishRepository.createTables();
     }
 }

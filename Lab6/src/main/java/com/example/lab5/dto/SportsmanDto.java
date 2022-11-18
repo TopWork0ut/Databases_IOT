@@ -20,4 +20,5 @@ public class SportsmanDto extends RepresentationModel<SportsmanDto> {
     private final Integer height;
     private final Integer weight;
     private final Integer scheduleID;
+    private final Integer doctor_id;
 }
