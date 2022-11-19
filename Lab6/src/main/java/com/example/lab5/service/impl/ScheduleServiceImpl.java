@@ -81,4 +81,9 @@ public class ScheduleServiceImpl implements ScheduleService {
                 .orElseThrow(() -> new SupplementNotFoundException(supplementId));
         return supplement.getSchedules().stream().toList();
     }
+
+    @Override
+    public void scheduleDishInsertion(Integer dish_id, Integer schedule_id) {
+        scheduleRepository.scheduleDishInsertion(dish_id, schedule_id);
+    }
 }

@@ -89,6 +89,13 @@ CREATE TABLE IF NOT EXISTS `sport_supplements`.`schedule_supplement` (
     COLLATE = utf8mb4_0900_ai_ci;
 
 
+
+CREATE TABLE IF NOT EXISTS `sport_supplements`.`doctor` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(45) NOT NULL,
+    `surname` VARCHAR(45) NOT NULL,
+    PRIMARY KEY (`id`))
+    ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `sport_supplements`.`sportsman`
 -- -----------------------------------------------------
@@ -100,6 +107,7 @@ CREATE TABLE IF NOT EXISTS `sport_supplements`.`sportsman` (
     `height` INT NOT NULL,
     `weight` INT NOT NULL,
     `schedule_id` INT NOT NULL,
+    `doctor_id` INT NOT NULL,
     PRIMARY KEY (`id`, `schedule_id`),
     INDEX `fk_sportsman_schedule1_idx` (`schedule_id` ASC) VISIBLE,
     CONSTRAINT `fk_sportsman_schedule1`
@@ -166,13 +174,36 @@ insert into schedule_dish(dish_id,schedule_id) values(37,31);
 insert into schedule_dish(dish_id,schedule_id) values(39,37);
 insert into schedule_dish(dish_id,schedule_id) values(39,38);
 
-insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg1','M1','''powerlifting',172,81,31);
-insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg2','M2','powerlifting',179,89,33);
-insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg3','M3','crossfit',182,83,38);
-insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg4','M4','powerlifting',73,81,36);
-insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg5','M5','crossfit',173,91,34);
-insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg6','M6','swimming',162,61,38);
-insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg7','M7','powerlifting',186,101,32);
-insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg8','M8','powerlifting',189,91,31);
-insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg9','M9','crossfit',191,82,39);
-insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg10','M10','swimming',198,93,38);
+insert into doctor(name, surname) values('A1','1');
+insert into doctor(name, surname) values('A2','12');
+insert into doctor(name, surname) values('A3','13');
+insert into doctor(name, surname) values('A4','14');
+insert into doctor(name, surname) values('A5','15');
+insert into doctor(name, surname) values('A6','16');
+insert into doctor(name, surname) values('A7','17');
+insert into doctor(name, surname) values('A8','18');
+insert into doctor(name, surname) values('A9','19');
+insert into doctor(name, surname) values('A10','20');
+
+insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id,doctor_id) values('Oleg1','M1','''powerlifting',172,81,31,1);
+insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id,doctor_id) values('Oleg2','M2','powerlifting',179,89,33,2);
+insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id,doctor_id) values('Oleg3','M3','crossfit',182,83,38,1);
+insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id,doctor_id) values('Oleg4','M4','powerlifting',73,81,36,4);
+insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id,doctor_id) values('Oleg5','M5','crossfit',173,91,34,5);
+insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id,doctor_id) values('Oleg6','M6','swimming',162,61,38,2);
+insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id,doctor_id) values('Oleg7','M7','powerlifting',186,101,32,2);
+insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id,doctor_id) values('Oleg8','M8','powerlifting',189,91,31,9);
+insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id,doctor_id) values('Oleg9','M9','crossfit',191,82,39,7);
+insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id,doctor_id) values('Oleg10','M10','swimming',198,93,38,4);
+
+-- insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg1','M1','''powerlifting',172,81,31);
+-- insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg2','M2','powerlifting',179,89,33);
+-- insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg3','M3','crossfit',182,83,38);
+-- insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg4','M4','powerlifting',73,81,36);
+-- insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg5','M5','crossfit',173,91,34);
+-- insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg6','M6','swimming',162,61,38);
+-- insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg7','M7','powerlifting',186,101,32);
+-- insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg8','M8','powerlifting',189,91,31);
+-- insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg9','M9','crossfit',191,82,39);
+-- insert into sportsman(name, surname, kind_of_sport,height,weight,schedule_id) values('Oleg10','M10','swimming',198,93,38);
+

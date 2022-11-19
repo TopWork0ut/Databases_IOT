@@ -66,4 +66,32 @@ public class DishController {
         dishService.delete(dishId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PostMapping(value = "/insert_dish")
+    public ResponseEntity<?> insertDish(@RequestBody Dish dish) {
+        dishService.dishInsertion(dish.getName(),dish.getComponents(),dish.getCalories(),dish.getManufacturer(),dish.getProductionDate(),dish.getConsumptionDate());
+        DishDto dishDto = dishDtoAssembler.toModel(dish);
+        return new ResponseEntity<>(dishDto, HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/insert_schedule_dish")
+    public void scheduleDishInsertion(Integer dish_id, Integer schedule_id) {
+        dishService.scheduleDishInsertion(dish_id,schedule_id);
+    }
+
+    @PostMapping(value = "/insertion_ten_dishes")
+    public void insertionTenDishes() {
+        dishService.insertionTenDishes();
+    }
+
+    @GetMapping(value = "/get_dish_min_calories")
+    public Integer printMinCountOfCalories(){
+        return dishService.printMinCountOfCalories();
+    };
+
+
+    @PostMapping(value = "/create_tables")
+    public void createTables(){
+        dishService.createTables();
+    };
 }

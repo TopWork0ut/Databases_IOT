@@ -79,4 +79,9 @@ public class ScheduleController {
         scheduleService.delete(scheduleId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PostMapping(value = "/insert_schedule_dish")
+    public void scheduleDishInsertion(Integer dish_id, Integer schedule_id) {
+        scheduleService.scheduleDishInsertion(dish_id,schedule_id);
+    }
 }

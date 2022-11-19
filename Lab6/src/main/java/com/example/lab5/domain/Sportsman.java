@@ -24,9 +24,15 @@ public class Sportsman {
     @Basic
     @Column(name = "weight")
     private Integer weight;
+
+    @Basic
+    @Column(name = "doctor_id")
+    private Integer doctor_id;
     @ManyToOne
     @JoinColumn(name = "schedule_id", referencedColumnName = "id", nullable = false)
     private Schedule schedule;
+
+
 
     public Integer getId() {
         return id;
@@ -42,6 +48,14 @@ public class Sportsman {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getDoctor_id() {
+        return doctor_id;
+    }
+
+    public void setDoctor_id(Integer doctor_id) {
+        this.doctor_id = doctor_id;
     }
 
     public String getSurname() {
@@ -76,18 +90,32 @@ public class Sportsman {
         this.weight = weight;
     }
 
+
+//    @Override
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Sportsman sportsman = (Sportsman) o;
-        return Objects.equals(id, sportsman.id) && Objects.equals(name, sportsman.name) && Objects.equals(surname, sportsman.surname) && Objects.equals(kindOfSport, sportsman.kindOfSport) && Objects.equals(height, sportsman.height) && Objects.equals(weight, sportsman.weight);
+        return Objects.equals(id, sportsman.id) && Objects.equals(name, sportsman.name) && Objects.equals(surname, sportsman.surname) && Objects.equals(kindOfSport, sportsman.kindOfSport) && Objects.equals(height, sportsman.height) && Objects.equals(weight, sportsman.weight) && Objects.equals(doctor_id, sportsman.doctor_id) && Objects.equals(schedule, sportsman.schedule);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, kindOfSport, height, weight);
+        return Objects.hash(id, name, surname, kindOfSport, height, weight, doctor_id, schedule);
     }
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Sportsman sportsman = (Sportsman) o;
+//        return Objects.equals(id, sportsman.id) && Objects.equals(name, sportsman.name) && Objects.equals(surname, sportsman.surname) && Objects.equals(kindOfSport, sportsman.kindOfSport) && Objects.equals(height, sportsman.height) && Objects.equals(weight, sportsman.weight);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, name, surname, kindOfSport, height, weight);
+//    }
 
     public Schedule getSchedule() {
         return schedule;

@@ -9,4 +9,6 @@ public interface ScheduleService extends GeneralService<Schedule, Integer>{
     List<Schedule> getSchedulesByDishId(Integer dishId);
 
     List<Schedule> getSchedulesBySupplementId(Integer supplementId);
+
+    void scheduleDishInsertion(Integer dish_id, Integer schedule_id);
 }
